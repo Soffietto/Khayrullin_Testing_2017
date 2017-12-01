@@ -23,6 +23,7 @@ public class PostHelper extends HelperBase {
 
     public boolean isPostLoaded(Post post) throws InterruptedException {
         String text = post.getText();
+        sleep();
         List<WebElement> elements = driver.findElements(By.id("post_text"));
         return elements.get(elements.size() - 1).getText().equals(text);
     }

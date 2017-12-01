@@ -22,8 +22,9 @@ public class CommentHelper extends HelperBase {
         driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     }
 
-    public boolean isCommentOnThePage(Comment comment) {
+    public boolean isCommentOnThePage(Comment comment) throws InterruptedException {
         String text = comment.getText();
+        sleep();
         List<WebElement> elements = driver.findElements(By.id("comment_text"));
         String lastComment = elements.get(elements.size() - 1).getText().substring(6);
         return lastComment.equals(text);

@@ -3,7 +3,6 @@ package org.testing.tests;
 import org.junit.After;
 import org.junit.Before;
 import org.testing.AppManager;
-import org.testing.enity.SignInParams;
 
 import static org.junit.Assert.fail;
 
