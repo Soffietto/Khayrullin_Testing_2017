@@ -1,6 +1,8 @@
 package org.testing.tests;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.testing.enity.Post;
 
 public class PostTest extends AuthBase{
@@ -11,5 +13,7 @@ public class PostTest extends AuthBase{
     @Test
     public void adding_new_post_test() throws Exception {
         appManager.getPostHelper().addPost(post);
+        boolean isPostLoaded = appManager.getPostHelper().isPostLoaded(post);
+        Assert.assertTrue(isPostLoaded);
     }
 }

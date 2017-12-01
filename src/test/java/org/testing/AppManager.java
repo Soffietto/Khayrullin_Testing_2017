@@ -7,6 +7,7 @@ import org.testing.helpers.LoginHelper;
 import org.testing.helpers.NavigateHelper;
 import org.testing.helpers.PostHelper;
 import org.testing.util.PropertySetter;
+import org.testing.util.Settings;
 
 public class AppManager {
 
@@ -18,10 +19,12 @@ public class AppManager {
     private LoginHelper loginHelper;
     private NavigateHelper navigateHelper;
 
-    public AppManager() {
+    private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
+
+    private AppManager() {
         PropertySetter.setProperty();
         driver = new FirefoxDriver();
-        baseUrl = "http://localhost:8080";
+        baseUrl = Settings.getBaseUrl();
 //        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         commentHelper = new CommentHelper(this);
@@ -56,5 +59,14 @@ public class AppManager {
 
     public NavigateHelper getNavigateHelper() {
         return navigateHelper;
+    }
+
+    public static AppManager getInstance() {
+        if(app.get() == null) {
+            AppManager appManager = new AppManager();
+            appManager.getNavigateHelper().getLoginPage();
+            app.set(appManager);
+        }
+        return app.get();
     }
 }

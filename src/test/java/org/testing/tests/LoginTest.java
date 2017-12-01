@@ -3,11 +3,12 @@ package org.testing.tests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testing.enity.SignInParams;
+import org.testing.util.Settings;
 
 public class LoginTest extends TestBase {
 
-    private final String LOGIN = "azot273@gmail.com";
-    private final String PASSWORD = "HzxU683J";
+    private final String LOGIN = Settings.getlogin();
+    private final String PASSWORD = Settings.getPassword();
     private final String WRONG_PASSWORD = "123qwe";
 
     @Test
@@ -15,7 +16,8 @@ public class LoginTest extends TestBase {
         SignInParams signInParams = new SignInParams(LOGIN, PASSWORD);
         appManager.getLoginHelper().logout();
         appManager.getLoginHelper().login(signInParams);
-        Assert.assertTrue(appManager.getLoginHelper().isLoggedIn(signInParams));
+        boolean isLoggedIn = appManager.getLoginHelper().isLoggedIn(signInParams);
+        Assert.assertTrue(isLoggedIn);
     }
 
     @Test

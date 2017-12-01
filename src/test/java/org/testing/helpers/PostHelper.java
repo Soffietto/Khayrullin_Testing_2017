@@ -1,8 +1,12 @@
 package org.testing.helpers;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testing.AppManager;
 import org.testing.enity.Post;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PostHelper extends HelperBase {
     public PostHelper(AppManager appManager) {
@@ -15,5 +19,11 @@ public class PostHelper extends HelperBase {
         driver.findElement(By.id("text")).clear();
         driver.findElement(By.id("text")).sendKeys(text);
         driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    }
+
+    public boolean isPostLoaded(Post post) throws InterruptedException {
+        String text = post.getText();
+        List<WebElement> elements = driver.findElements(By.id("post_text"));
+        return elements.get(elements.size() - 1).getText().equals(text);
     }
 }
