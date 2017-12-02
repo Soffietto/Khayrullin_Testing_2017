@@ -2,8 +2,8 @@ package org.testing.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.testing.bases.AuthBase;
 import org.testing.enity.Comment;
-import org.testing.enity.SignInParams;
 
 public class CommentTest extends AuthBase {
 

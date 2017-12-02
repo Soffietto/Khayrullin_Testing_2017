@@ -3,10 +3,10 @@ package org.testing.helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testing.AppManager;
+import org.testing.bases.HelperBase;
 import org.testing.enity.Post;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PostHelper extends HelperBase {
     public PostHelper(AppManager appManager) {

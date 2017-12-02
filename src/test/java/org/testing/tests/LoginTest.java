@@ -2,6 +2,7 @@ package org.testing.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.testing.bases.TestBase;
 import org.testing.enity.SignInParams;
 import org.testing.util.Settings;
 

@@ -1,4 +1,4 @@
-package org.testing.tests;
+package org.testing.bases;
 
 import org.junit.After;
 import org.junit.Before;

@@ -1,6 +1,7 @@
 package org.testing.helpers;
 
 import org.testing.AppManager;
+import org.testing.bases.HelperBase;
 import org.testing.util.Settings;
 
 public class NavigateHelper extends HelperBase {

@@ -2,10 +2,10 @@ package org.testing.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
+import org.testing.bases.AuthBase;
 import org.testing.enity.Post;
 
-public class PostTest extends AuthBase{
+public class PostTest extends AuthBase {
 
     private final String POST_TEXT = "Post text";
     private final Post post = new Post(POST_TEXT);

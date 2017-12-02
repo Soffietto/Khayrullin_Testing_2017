@@ -1,4 +1,4 @@
-package org.testing.helpers;
+package org.testing.bases;
 
 import org.openqa.selenium.*;
 import org.testing.AppManager;

@@ -2,6 +2,7 @@ package org.testing.helpers;
 
 import org.openqa.selenium.By;
 import org.testing.AppManager;
+import org.testing.bases.HelperBase;
 import org.testing.enity.SignInParams;
 
 public class LoginHelper extends HelperBase {
