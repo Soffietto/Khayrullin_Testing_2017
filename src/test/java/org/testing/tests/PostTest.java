@@ -3,7 +3,6 @@ package org.testing.tests;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import javafx.geometry.Pos;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -28,7 +27,7 @@ public class PostTest extends AuthBase {
     private static final String FILE_PATH = "src/test/resources/jsons/post.json";
 
     @DataProvider
-    public static Object[][] postDataProvider() throws ParseException, IOException {
+    public static List<List<Post>> postDataProvider() throws ParseException, IOException {
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(new FileReader(FILE_PATH));
         JSONObject jsonObject = (JSONObject) obj;
@@ -36,11 +35,13 @@ public class PostTest extends AuthBase {
         List<Post> postList = strings.stream()
                 .map(Post::new)
                 .collect(Collectors.toList());
-        Post[][] posts = new Post[postList.size()][1];
-        for (int i = 0; i < postList.size(); i++) {
-            posts[i][0] = postList.get(i);
-        }
-        return posts;
+        return postList.stream()
+                .map(post -> {
+                    List<Post> posts = new ArrayList<>();
+                    posts.add(post);
+                    return posts;
+                })
+                .collect(Collectors.toList());
     }
 
     @Test

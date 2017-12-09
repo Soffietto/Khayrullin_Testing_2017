@@ -11,10 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.testing.bases.AuthBase;
 import org.testing.enity.Comment;
-import org.testing.enity.Post;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,19 +27,21 @@ public class CommentTest extends AuthBase {
     private static final String FILE_PATH = "src/test/resources/jsons/comment.json";
 
     @DataProvider
-    public static Object[][] commentDataProvider() throws ParseException, IOException {
+    public static List<List<Comment>> commentDataProvider() throws ParseException, IOException {
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(new FileReader(FILE_PATH));
         JSONObject jsonObject = (JSONObject) obj;
         List<String> strings = (List<String>) jsonObject.get("comments");
-        List<Comment> postList = strings.stream()
+        List<Comment> commentsList = strings.stream()
                 .map(Comment::new)
                 .collect(Collectors.toList());
-        Comment[][] comments = new Comment[postList.size()][1];
-        for (int i = 0; i < postList.size(); i++) {
-            comments[i][0] = postList.get(i);
-        }
-        return comments;
+        return commentsList.stream()
+                .map(comment -> {
+                    List<Comment> comments = new ArrayList<>();
+                    comments.add(comment);
+                    return comments;
+                })
+                .collect(Collectors.toList());
     }
 
     @Test
