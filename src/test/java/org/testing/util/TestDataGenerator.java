@@ -10,8 +10,10 @@ import java.util.Random;
 
 public class TestDataGenerator {
 
+    private static final String JSONS_PATH = "src/test/resources/jsons/";
+
     public static void generatePostData(String fileName, int charCount, int postCount) {
-        Writer writer = getWriter(/*"src/test/resources/jsons/" + */fileName);
+        Writer writer = getWriter(JSONS_PATH + fileName);
         JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < postCount; i++) {
@@ -30,7 +32,7 @@ public class TestDataGenerator {
     }
 
     public static void generateCommentData(String fileName, int charCount, int commentCount) {
-        Writer writer = getWriter(/*"src/test/resources/jsons/" + */fileName);
+        Writer writer = getWriter(JSONS_PATH + fileName);
         JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < commentCount; i++) {
